@@ -11,4 +11,6 @@ const VideoSchema = new Schema(
     }
 );
 
+VideoSchema.index({ title: 'text', description: 'text' });
+
 module.exports = VideoModel = model('Video', VideoSchema);

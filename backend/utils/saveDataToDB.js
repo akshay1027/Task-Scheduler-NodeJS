@@ -13,8 +13,14 @@ const saveDataToDB = async (filteredData) => {
                 "publishedAt": item.publishedAt
             })
         })
+
+        console.log("saved ♥🚀");
+
+        return true;
+
     } catch (error) {
         console.log(error);
+        return false;
     }
 }
 

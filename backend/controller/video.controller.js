@@ -6,17 +6,17 @@ const getAllVideos = async (req, res) => {
         const pageSize = parseInt(req.query.pageSize) || 5;
         const skip = (page - 1) * pageSize;
         const totalDocuments = await VideoModel.countDocuments();
-        console.log("total docs", totalDocuments)
-        const pages = Math.ceil(totalDocuments / pageSize)
+        console.log("total docs", totalDocuments);
+        const pages = Math.ceil(totalDocuments / pageSize);
 
         // Get videos -> Skip documents based on query -> Limit documents based on query -> sort the final result 
         const videos = await VideoModel
             .find()
             .sort({ createdAt: 'desc' })
             .skip(skip)
-            .limit(pageSize)
+            .limit(pageSize);
 
-        console.log("videos =", videos)
+        console.log("videos =", videos);
 
         res.status(200).json({
             data: videos,
@@ -32,6 +32,7 @@ const getAllVideos = async (req, res) => {
 
 const getFilteredVideos = async (req, res) => {
     try {
+        const searchString = req.query.searchString;
         const page = parseInt(req.query.page) || 1;
         const pageSize = parseInt(req.query.pageSize) || 5;
         const skip = (page - 1) * pageSize;
@@ -40,10 +41,13 @@ const getFilteredVideos = async (req, res) => {
 
         // Get videos -> Skip documents based on query -> Limit documents based on query -> sort the final result 
         const videos = await VideoModel
-            .find()
+            .find({ $text: { $search: searchString } })
             .skip(skip)
             .limit(pageSize)
-            .sort({ createdAt: desc });
+            .sort({ createdAt: "desc" });
+
+
+        console.log("Videos search = ", videos);
 
         res.status(200).json({
             data: videos,

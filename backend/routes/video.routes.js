@@ -8,6 +8,8 @@ const {
 
 // All responses are paginated
 router.get('/', getAllVideos);
+router.get('/search', getFilteredVideos);
+
 // router.post('/search', authenticationVerifier, getFilteredVideos);
 // router.get('/reviews/:tutorId', getAllReviewsForTutor)
 

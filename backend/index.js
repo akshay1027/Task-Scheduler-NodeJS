@@ -5,7 +5,7 @@ const dotenv = require('dotenv');  //  Keep sensitive data
 
 const videoRoutes = require('./routes/video.routes');
 
-const errorHandler = require('./middleware/errorHandler');
+// const errorHandler = require('./middleware/errorHandler');
 const fetchYoutubeAPIScheduler = require('./utils/taskScheduler');
 
 const API_ENDPOINT = '/api/v1';
@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 app.use(`${API_ENDPOINT}/videos`, videoRoutes);
 
 // error handler 
-app.use(errorHandler);
+// app.use(errorHandler);
 
 // server config listen to PORT
 const PORT = process.env.PORT || 5001;

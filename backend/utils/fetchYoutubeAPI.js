@@ -1,6 +1,7 @@
 const { google } = require("googleapis");
 const dotenv = require('dotenv');  //  Keep sensitive data
 const VideoModel = require("../models/video.model");
+const saveDataToDB = require("./saveDataToDB");
 // const saveDataToDB = require("../utils/saveDataToDB");
 
 dotenv.config();
@@ -38,6 +39,8 @@ const fetchYoutubeAPI = async () => {
                 "publishedAt": item.publishedAt
             })
         })
+
+        console.log("Returned data ⭐", saveData);
 
         // await VideoModel.sort({ publishedAt: 'asc' }).save();
 
