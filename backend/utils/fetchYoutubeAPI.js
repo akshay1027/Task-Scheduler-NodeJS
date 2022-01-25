@@ -39,7 +39,7 @@ const fetchYoutubeAPI = async () => {
             })
         })
 
-        await VideoModel.sort({ publishedAt: 'asc' }).save();
+        // await VideoModel.sort({ publishedAt: 'asc' }).save();
 
         // console.log('Document saved in db = ', saveData);
 
