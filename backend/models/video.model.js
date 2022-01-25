@@ -1,25 +1,14 @@
 const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema(
+const VideoSchema = new Schema(
     {
-        title: { type: String, required: true },
-        userName: {
-            type: String,
-            required: true,
-            unique: 'Account already exists with this userName'
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: 'Account already exists with this email'
-        },
-        password: { type: String, required: true },
-        profileImage: { type: String },
-        phoneNumber: { type: String },
-        skills: [
-            { type: String }
-        ],
+        title: { type: String, required: true, unique: "Title has to be unique to avoid same videos" },
+        description: { type: String },
+        channelTitle: { type: String, required: true },
+        thumbnails: { type: 'String', required: true },
+        liveBroadcastContent: { type: String, default: "none" },
+        publishedAt: { type: Date }
     }
 );
 
-module.exports = UserModel = model('User', UserSchema);
+module.exports = VideoModel = model('Video', VideoSchema);
