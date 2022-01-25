@@ -11,6 +11,8 @@ API ENDPOINTS:
      - pageSize: default 5
 
     Example Response: 
+
+    ```
     {
     "data": [
         {
@@ -68,6 +70,7 @@ API ENDPOINTS:
     "page": 1,
     "pages": 8
     }
+    ```
 
 2)  About: Get all videos that are filtered after the given search query is executed. Paginated response.
 
@@ -80,6 +83,8 @@ API ENDPOINTS:
      - pageSize: default 5
 
     Example Response: 
+
+    ```
     {
     "data": [
         {
@@ -107,5 +112,6 @@ API ENDPOINTS:
     "page": 1,
     "pages": null
     }
+    ```
 
 
