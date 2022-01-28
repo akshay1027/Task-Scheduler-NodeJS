@@ -1,8 +1,6 @@
 const { google } = require("googleapis");
 const dotenv = require('dotenv');  //  Keep sensitive data
 const VideoModel = require("../models/video.model");
-const saveDataToDB = require("./saveDataToDB");
-// const saveDataToDB = require("../utils/saveDataToDB");
 
 dotenv.config();
 
@@ -40,10 +38,9 @@ const fetchYoutubeAPI = async () => {
             })
         })
 
-        console.log("Returned data ⭐", saveData);
+        console.log("Returned data ⭐= ", filteredData);
 
         // await VideoModel.sort({ publishedAt: 'asc' }).save();
-
         // console.log('Document saved in db = ', saveData);
 
     } catch (error) {

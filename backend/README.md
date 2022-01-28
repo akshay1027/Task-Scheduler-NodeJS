@@ -1,16 +1,15 @@
-API ENDPOINTS: 
+## API ENDPOINTS: 
 
-1)  About: Get all the videos in db (fetched from youtube API asynchronously every 10 secs). Paginated response.
+## 1)  
+| About | Get all the videos in db (fetched from youtube API asynchronously every 10 secs). Paginated response. |
+| ------ | ------ |
+| HTTP method | GET |
+| Route (without optional queries): | /api/v1/videos |
+| Optional Queries: | | |
+| Page | Default - 1 |
+| PageSize | Default - 5 |
 
-    HTTP method: GET
-
-    Route (without optional queries): /api/v1/videos
-
-    Optional Queries:
-     - page: default 1
-     - pageSize: default 5
-
-    Example Response: 
+### Example Response: 
 
     ```
     {
@@ -72,17 +71,16 @@ API ENDPOINTS:
     }
     ```
 
-2)  About: Get all videos that are filtered after the given search query is executed. Paginated response.
+## 2)  
+| About | Get all videos that are filtered after the given search query is executed. Paginated response. |
+| ------ | ------ |
+| HTTP method | GET |
+| Route (without optional queries): | /api/v1/videos/search?searchString=Comores |
+| Optional Queries: | | |
+| Page | Default - 1 |
+| PageSize | Default - 5 |
 
-    HTTP method: GET
-
-    Route: /api/v1/videos/search?searchString=Comores
-
-    Optional Queries:
-     - page: default 1
-     - pageSize: default 5
-
-    Example Response: 
+### Example Response: 
 
     ```
     {
@@ -114,4 +112,12 @@ API ENDPOINTS:
     }
     ```
 
+## Challenges vs How i solved them
 
+| Challenges | How i solved them |
+| ------ | ------ |
+| Moving from MVC to MVCS architecture | Went through few websites and stackoverFlow and found out why i should revamp (optimised, reactor pattern, every module does one function rule, reuseablity) |
+| Mongoose partial text based search | used a solution which utilises regex to solve this problem |
+| Making task scheduler async | Went through a lot of packages and articles to solve this. thought of using setInterval but it would be optimsed for production level code. |
+| Global error handling | I used to handle errors in try catch in every function, then learnt about Global error handling |
+| Global Async handler | I used to handle async functions, then learnt about Global Async handler  |

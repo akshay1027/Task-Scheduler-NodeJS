@@ -1,44 +1,30 @@
-const express = require('express');  // Build my REST API
-const mongoose = require('mongoose');  // Used for CRUD operations
-const cors = require('cors');  // CORS
-const dotenv = require('dotenv');  //  Keep sensitive data
+const express = require('express');
+const cors = require('cors');
 
-const videoRoutes = require('./routes/video.routes');
-
-// const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./middleware/errorHandler');
+const initializeConnectionToDB = require('./utils/connectToDB');
 const fetchYoutubeAPIScheduler = require('./utils/taskScheduler');
+
+const appRoutes = require('./routes/v1');
 
 const API_ENDPOINT = '/api/v1';
 
-dotenv.config();
-
 const app = express();
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
-const mongodbConnectionOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-};
-
-mongoose.connect(process.env.MONGO_URI, mongodbConnectionOptions, (error) => {
-    if (error) {
-        return console.error('error: ', error);
-    }
-    console.log("mongoDB working succesfully");
-});
-
-fetchYoutubeAPIScheduler();
+// initializeConnectionToDB();
+// fetchYoutubeAPIScheduler();
 
 app.get('/', (req, res) => {
     res.send('Welcome to the task scheduler backend');
 });
 
 // These endpoint are public routes
-app.use(`${API_ENDPOINT}/videos`, videoRoutes);
+app.use(`/${API_ENDPOINT}`, appRoutes);
 
-// error handler 
-// app.use(errorHandler);
+// Error Handler
+app.use(errorHandler);
 
 // server config listen to PORT
 const PORT = process.env.PORT || 5001;
