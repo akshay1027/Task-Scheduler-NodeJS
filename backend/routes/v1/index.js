@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-    videosController
-} = require('../../controller/video.controller');
+const videoRoutes = require("../../controller/video.route");
 
-router.get('/videos', videosController);
+router.use('/videos', videoRoutes);
 // router.get('/search', getFilteredVideos);
 
 module.exports = router;

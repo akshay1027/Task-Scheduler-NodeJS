@@ -121,3 +121,14 @@
 | Making task scheduler async | Went through a lot of packages and articles to solve this. thought of using setInterval but it would be optimsed for production level code. |
 | Global error handling | I used to handle errors in try catch in every function, then learnt about Global error handling |
 | Global Async handler | I used to handle async functions, then learnt about Global Async handler  |
+
+## Features & Learning checklist
+
+- [x] Asynchronous task scheduler
+- [x] Global Error handling
+- [x] Paginated Request
+- [x] Advanced Search filtering
+- [x] Modular, reuseable code following reactor pattern
+- [x] Intregrating third part APIs (Youtube API)
+- [x] Optimised CRUD operations
+- [x] MVCS architecture
